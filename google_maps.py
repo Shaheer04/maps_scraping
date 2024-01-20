@@ -12,12 +12,15 @@ client = serpapi.Client(api_key=api_key)
 json_data = client.search({
         'engine':"google_maps",
         'type': 'search',
-        'q': 'bookstores in newyork',
-        
+        'q': 'Gyms in karachi',
 })
+
+# Specify CSV file name
+csv_file_name = "./csv/Gyms in karachi.csv"
 
 print(json_data)
 
+#flatten the json object to write it in Csv
 def flatten_dict(d, parent_key='', sep='.'):
     items = []
     for k, v in d.items():
@@ -30,9 +33,6 @@ def flatten_dict(d, parent_key='', sep='.'):
 
 flattened_data = flatten_dict(json_data)
 
-# Specify CSV file name
-csv_file_name = 'query.csv'
-
 # Open CSV file in write mode
 with open(csv_file_name, 'w', newline='', encoding='utf-8') as csv_file:
 
@@ -44,7 +44,5 @@ with open(csv_file_name, 'w', newline='', encoding='utf-8') as csv_file:
     for dictionary in flattened_data['local_results']:
         csv_writer.writerow (dictionary.values())
        
-
-
 
 print(f'CSV file "{csv_file_name}" created successfully.')
