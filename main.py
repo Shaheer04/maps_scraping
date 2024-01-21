@@ -2,7 +2,6 @@ import serpapi
 import os
 import csv
 from dotenv import load_dotenv
-import pandas as pd
 from flatten_json import flatten
 import streamlit as st
 import time

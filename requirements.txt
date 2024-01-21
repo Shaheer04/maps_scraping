@@ -1,0 +1,4 @@
+serpapi==0.6.1
+streamlit==0.89.0
+dotenv
+flatten-json==0.1.13
