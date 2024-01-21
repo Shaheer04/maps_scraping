@@ -2,3 +2,4 @@ serpapi
 streamlit
 dotenv
 flatten-json
+pip == 23.3.2
