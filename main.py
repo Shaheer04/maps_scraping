@@ -22,7 +22,7 @@ def get_results(query, quards, pages):
     })
     return json_data
 
-# flatten the json object to write it in Csv
+# flatten the json object to write it in CSV
 def flatten_dict(d, parent_key='', sep='.'):
     items = []
     for k, v in d.items():
@@ -35,14 +35,16 @@ def flatten_dict(d, parent_key='', sep='.'):
 
 # Open CSV file in write mode
 def create_csv(query, quards, pages):
-    csv_file_name = f"./csv/{query}.csv"
+    csv_dir = "./csv"
+    csv_file_name = f"{csv_dir}/{query}.csv"
     data = get_results(query, quards, pages)
     flattened_data = flatten_dict(data)
 
-    with open(csv_file_name, 'w', newline='', encoding='utf-8') as csv_file:
-        if not os.path.exists("./csv"):
-            os.makedirs("./csv")
+    # Ensure the directory exists
+    if not os.path.exists(csv_dir):
+        os.makedirs(csv_dir)
 
+    with open(csv_file_name, 'w', newline='', encoding='utf-8') as csv_file:
         # Create a CSV writer
         csv_writer = csv.writer(csv_file)
 
@@ -64,7 +66,7 @@ def create_csv(query, quards, pages):
                 ])
             st.success(f"{csv_file_name} is created successfully!")
 
-#function for file download
+# Function for file download
 def get_file():
     with open(f"./csv/{query}.csv", "r") as file:
         btn = st.download_button(
@@ -73,7 +75,7 @@ def get_file():
                 file_name=csv_file_name,
                 mime="text/csv"
             )
-        
+
 # Streamlit app
 st.title("Maps Scraping")
 st.info("You can get data for different places using this webapp, for your marketing purposes")
@@ -88,7 +90,7 @@ quards = st.text_area("Enter longitude and latitude for the search area")
 csv_file_name = f"{query}.csv"
 
 if st.button("Get Data"):
-    with st.status("Downloading data..."):
+    with st.spinner("Downloading data..."):
         st.write("Searching for data...")
         time.sleep(2)
         st.write("Found URL.")
@@ -97,6 +99,5 @@ if st.button("Get Data"):
         time.sleep(1)
         create_csv(query, quards, pages)
     get_file()
-    
     
 
