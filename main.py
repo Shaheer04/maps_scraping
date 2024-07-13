@@ -8,7 +8,7 @@ import time
 
 load_dotenv()
 
-api_key = os.getenv('SERPAPI_KEY')
+api_key = os.getenv('SERPAPI_KEY') or st.secrets["SERPAPI_KEY"]
 client = serpapi.Client(api_key=api_key)
 
 # get results
