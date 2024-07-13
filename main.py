@@ -77,6 +77,8 @@ def get_file():
 # Streamlit app
 st.title("Maps Scraping")
 st.info("You can get data for different places using this webapp, for your marketing purposes")
+st.info("ADD quards like this for the location '@ + latitude + , + longitude + , + zoom', For example: @40.7128,-74.0060,3z")
+st.caption(" 'Zoom parameter' : (it ranges from 3z, map completely zoomed out - to 21z, map completely zoomed in)")
 
 query = st.text_input("Enter your query")
 pages = st.number_input("Enter number of pages (starts from 0 as first page and maximum is 5)", max_value=5)
