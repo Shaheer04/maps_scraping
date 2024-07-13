@@ -1,5 +1,4 @@
---upgrade pip
 serpapi
 streamlit
-dotenv
+python-dotenv
 flatten-json
