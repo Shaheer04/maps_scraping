@@ -82,6 +82,7 @@ query = st.text_input("Enter your query")
 pages = st.number_input("Enter number of pages (starts from 0 as first page and maximum is 5)", max_value=5)
 st.info("ADD quards like this for the location '@ + latitude + , + longitude + , + zoom', For example: @40.7128,-74.0060,3z")
 st.caption(" 'Zoom parameter' : (it ranges from 3z, map completely zoomed out - to 21z, map completely zoomed in)")
+st.caption("use [this](https://www.latlong.net/convert-address-to-lat-long.html) link to get quards!")
 quards = st.text_area("Enter longitude and latitude for the search area")
 
 csv_file_name = f"{query}.csv"
