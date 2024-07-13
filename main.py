@@ -40,7 +40,7 @@ def create_csv(query, quards, pages):
     flattened_data = flatten_dict(data)
 
     with open(csv_file_name, 'w', newline='', encoding='utf-8') as csv_file:
-        if not "./csv":
+        if not os.path.exists("./csv"):
             os.makedirs("./csv")
 
         # Create a CSV writer
